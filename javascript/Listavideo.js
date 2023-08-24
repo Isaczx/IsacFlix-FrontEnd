@@ -1,4 +1,4 @@
-const id = window.localStorage.getItem("ID");
+const id = localStorage.getItem("ID");
 const token = localStorage.getItem("token");
 const headers = new Headers();
 headers.append("Authorization", `Bearer ${token}`);
