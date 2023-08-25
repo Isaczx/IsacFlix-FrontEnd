@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" href="isacflix-logo.png" type="image/x-icon">
+    <title>Tela de Login - Isacflix</title>
+    <link rel="stylesheet" type="text/css" href="styles/style.css">
+</head>
+<body>
+
+    <div class="left-login">
+        <h2>Faça login <br> para acessar o IsacFlix</h2>
+        <img src="styles\animations\pirate-boat-animate.svg" alt="" id="animação">
+    </div>
+    <div class="right-login">
+        <div class="container">
+            
+
+            <form class="login-form" id="login-form" action=""   method="post">
+                <h2 id="l">Login</h2>
+                <div class="form-group">
+                    <input type="text" placeholder="Email@email.com" class="username" name="username" id="username"  required>
+                    <span class="underline"></span>
+                </div>
+                <div class="form-group">
+                    <input type="password" placeholder="Senha" class="password" id="password"  >
+                    <span class="underline"></span>
+                </div>
+                <button class="btn-login" type="submit"  id="login">Entrar</button>
+                <button class="btn-create" disabled = "true">Criar Conta</button>
+            </form>
+            <p id="recuperar">Recuperar senha</p>
+        </div>
+    </div>
+    <script src="javascript\TelaLogin.js"></script>
+</body>
+</html>
