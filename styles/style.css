@@ -1,14 +1,48 @@
+
+ :root{
+    --cor-primaria: #222831;
+    --cor-secundaria: #393E46;
+    --cor-terciaria: #00ADB5;
+    --cor-letras:#EEEEEE;
+}
+
 body {
-    background-color: #000;
+    background-color: var(--cor-primaria);
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
     font-family: 'Arial', sans-serif;
+    margin: 0;
+}
+.left-login{
+    width: 50vw;
+    height: 100vh;
+    display: flex;
+    font-size: 3vw;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    color: var(--cor-terciaria);
+}
+
+#animação{
+    width: 30vw;
+    height: 50vh;
+}
+
+.right-login{
+    width: 50vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 
 .container {
-    background-color: #000;
+    background-color:var(--cor-secundaria);
     padding: 30px;
     border-radius: 8px;
     text-align: center;
@@ -17,9 +51,16 @@ body {
     box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.5);
 }
 
-.logo img {
-    max-width: 200px;
-    margin-bottom: 30px;
+#l, p{
+    color: #00ADB5;
+}
+
+#recuperar{
+    cursor: pointer;
+}
+
+#recuperar:hover{
+    color: var(--cor-primaria);
 }
 
 .login-form {
@@ -28,10 +69,11 @@ body {
 
 h2 {
     margin-bottom: 30px;
-    color: #fff;
+    color:var(--cor-terciaria);
     font-size: 24px;
     letter-spacing: 1px;
     text-transform: uppercase;
+    text-align: center;
 }
 
 .form-group {
@@ -41,27 +83,27 @@ h2 {
 
 .form-group input {
     width: 100%;
-    padding: 10px;
+    padding: 5px 10px;
     border: none;
     border-bottom: 1px solid rgba(255, 255, 255, 0.2);
     outline: none;
     font-size: 16px;
-    color: #fff;
+    color:var(--cor-letras);
     background-color: transparent;
     transition: border-bottom-color 0.3s ease-in-out;
 }
 
 .form-group input:focus {
-    border-bottom-color: #e50914;
+    border-bottom-color: var(--cor-terciaria);
 }
 
 .form-group .underline {
     position: absolute;
     bottom: -1px;
     left: 0;
-    width: 100%;
+    width: 105%;
     height: 1px;
-    background-color: #e50914;
+    background-color: var(--cor-terciaria);
     transform: scaleX(0);
     transition: transform 0.3s ease-in-out;
 }
@@ -72,8 +114,8 @@ h2 {
 
 .btn-login,
 .btn-create {
-    background-color: #e50914;
-    color: #fff;
+    background-color: var(--cor-terciaria);
+    color: var(--cor-letras);
     border: none;
     padding: 12px 20px;
     border-radius: 4px;
@@ -91,5 +133,5 @@ h2 {
 
 .btn-login:hover,
 .btn-create:hover {
-    background-color: #b2070d;
+    color: var(--cor-primaria);
 }
