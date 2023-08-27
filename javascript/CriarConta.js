@@ -32,7 +32,6 @@ nome.addEventListener("blur", () =>{
 //quando tira o foco valida o CPF
 CPF.addEventListener("blur", () =>{
   ValidarCPF();
-  TestarNome();
 })
 
 //quando tira o foco do input confirmarSenha ele valida as senhas
