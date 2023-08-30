@@ -5,6 +5,7 @@ const senha = document.querySelector("#senha");
 const Rsenha = document.querySelector("#RSenha");
 const botao = document.querySelector("#butao");
 const form = document.querySelector(".form-group");
+const alerta = document.querySelector(".alert");
 const headers = new Headers;
 headers.append('Content-Type', 'application/json');
 
@@ -47,23 +48,27 @@ Rsenha.addEventListener("blur", () =>{
   ValidarSenha();
 })
 
-botao.addEventListener("mouseover", () =>{
-  ValidarSenha();
-  ValidarCPF();
-  TestarNome();
-})
 
 form.addEventListener("submit", function(evento){
     evento.preventDefault();
-   
-      
+    TestarNome();
+    TestarEmail();
+    ValidarCPF();
+    TestarCPF();
+    ValidarSenha();
+    
+    
+      if(botao.disabled = true){
+        evento.preventDefault();
+      }else{
+
       var f = Criar();
       nome.value = "";
       email.value= "",
       CPF.value ="";
       senha.value = "";
       Rsenha.value = "";
-    
+    }
 });
    
 
@@ -82,7 +87,9 @@ function Criar(){
         })
     }).then(response =>{
         if(!response.ok){
-            alert("Usuario , Email ou CPF ja cadastrados");
+          const msg = "Usuario , Email ou CPF ja cadastrados";
+          
+          mensagem(msg);
         }else{
           alert("Conta com sucesso!!");
         }
@@ -101,7 +108,7 @@ function ValidarCPF(){
   
   // ve contem 11 digitos e nao sao repetidos
   if(CPFValidar.length !== 11 || /^(.)\1+$/.test(CPFValidar)){
-    alert("CPF deve conter 11 digitos");
+    mensagem("CPF deve conter 11 digitos");
     botao.disabled=true;
   }else{
     var cpf = CPFValidar;
@@ -117,7 +124,7 @@ function ValidarCPF(){
     return true;
   }else{
     botao.disabled=true;
-    alert("CPF Invalido");
+    mensagem("CPF Invalido");
     return false;
   }
   }
@@ -131,13 +138,13 @@ function ValidarSenha(){
   // Se as senhas nao forem iguais. apaga os inputs e desativa o botao
   if(senha.value !== Rsenha.value ){
     botao.disabled=true;
-    alert("As senhas não coincidem. Preencha os campos corretamente.");
+    mensagem("As senhas não coincidem. Preencha os campos corretamente.");
     senha.value = "";
     Rsenha.value ="";
   }  else{
 // Se a senha nao conter no minimo 8 caracteres. desativa o botao
-   if (senha.value.length <= 7){
-      alert("A senha deve conter 8 caracteres ou mais");
+   if (senha.value.length <= 7){  
+      mensagem("A senha deve conter 8 caracteres ou mais")
       botao.disabled = true;
       senha.value = "";
       Rsenha.value ="";
@@ -156,15 +163,16 @@ function TestarNome(){
     headers: headers
   }).then(response =>{
     if(!response.ok){
-      alert("problema na requisição")
+      mensagem("problema na requisição")
     }
     return response.json();
   }).then(data =>{
     if(data.username === nome.value){
       botao.disabled = true;
-      alert("nome ja cadastrado");
+    
+     mensagem("Nome ja cadastrado");
     }else{
-      alert("prossiga");
+      mensagem("prossiga");
       botao.disabled = false;
     }
 
@@ -177,13 +185,13 @@ function TestarEmail(){
     headers: headers})
     .then(response =>{
       if(!response.ok){
-        alert("problema na requisição")
+        mensagem("problema na requisição")
       }
       return response.json();
     }).then(data =>{
       if(email.value === data.email){
         botao.disabled = true;
-        alert("Email ja cadastrado")
+        mensagem("Email ja cadastrado")
       }else{
         botao.disabled = false;
       }
@@ -196,17 +204,29 @@ function TestarCPF(){
     headers: headers})
     .then(response =>{
       if(!response.ok){
-        alert("falha na requisição")
+        mensagem("falha na requisição")
       }
       return response.json();
     }).then(data =>{
       console.log(data)
       if(CPF.value === data.cpf){
         botao.disabled = true;
-        alert("CPF ja cadastrado");
+        mensagem("CPF ja cadastrado");
       }else{
         botao.disabled = false;
         
       }
     })
+}
+
+function mensagem(msg){
+  const mensagem = document.createElement("div");
+  mensagem.classList.add("mensagem");
+  mensagem.innerText = msg;
+  alerta.append(mensagem);
+
+
+  setTimeout(() =>{
+    mensagem.remove();
+  }, 10000)
 }
