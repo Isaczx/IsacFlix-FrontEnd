@@ -11,10 +11,32 @@ input[type=number]::-webkit-outer-spin-button {
     margin: 0;
 }
 
-
 body{
     height: 100vh;
+    display: flex;
+    flex-direction: column;
 }
+
+.mensagem{
+    background-color: var(--cor-primaria);
+    color: var(--cor-terciaria);
+    margin-bottom: 20px;
+    animation: slide-in-right 0,2s cubic-bezier(0.25 , 0.46, 0.45, 0.94) both;
+    display: flex;
+    flex-direction: column-reverse;
+}
+
+.mensagem::before{
+    display: flex;
+    content: "";
+    position: inherit;
+    left: 0;
+    bottom: 0;
+    animation: time 10s forwards;
+    height: 2px;
+    background-color: var(--cor-terciaria);
+}
+
 .container{
     box-sizing: border-box;
 }
@@ -36,5 +58,25 @@ body{
 }
 
 
-  
+@keyframes slide-in-right {
+    0%{
+        transform: translate(1000px);
+        opacity: 0;
+    }
+
+    100%{
+        transform: translate(0);
+        opacity:1 ;
+    }
+}
+
+@keyframes time {
+    0% {
+        width:0;
+    }
+
+    100%{
+        width: 100%;
+    }
+}
     
