@@ -1,0 +1,48 @@
+:root{
+    --cor-primaria: #222831;
+    --cor-secundaria: #393E46;
+    --cor-terciaria: #00ADB5;
+    --cor-letras:#EEEEEE;
+}
+
+.containerAnime{
+    margin-top: 50px;
+}
+
+.Anime{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 3%;
+
+}
+
+.Descrição{
+    text-align: inherit;
+}
+
+.Nome,.foto,.Descrição{
+    padding-bottom: 10px
+}
+
+.foto{
+width: 200px;
+height: 275px;
+
+}
+
+.containerEpisodios{
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    flex-wrap: wrap;
+}
+
+.frame{
+    background-color: black;
+    width: 60%;
+}
+
+.setaD,.setaE{
+    background-color: var(--cor-secundaria);
+}

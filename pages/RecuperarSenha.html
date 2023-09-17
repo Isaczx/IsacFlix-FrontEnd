@@ -6,20 +6,26 @@
     <link rel="icon" href="../isacflix-logo.png">
     <title>Recuperar Senha - Isacflix</title>
     <meta name='viewport' content='width=device-width, initial-scale=1'>
-    <link rel='stylesheet' type='text/css' media='screen' href='../styles/style.css'>
-    <script src='main.js'></script>
+    <link rel='stylesheet' type='text/css'  href='../styles/style.css'>
+    <link rel="stylesheet" type='text/css' href="../styles/RecuperarSenha.css">
 </head>
 <body>
+    <div class="alert"></div>
     <div class="container" id="container">
         <form action="" method="post" class="form-group">
-            <h1>Recuperar Senha</h1>
-            <input type="email" placeholder="email">
-            <span id="underline" class="underline"></span>
-            <input type="text" placeholder="CPF">
-            <span id="underline" class="underline"></span>
+            <h1 >Recuperar Senha</h1>
+            <div>
+                <input type="email" placeholder="Email" id="email">
+                <span id="underline" class="underline"></span>
+            </div>
 
+            <div>
+                <input type="text" placeholder="CPF" id="CPF">
+                <span id="underline" class="underline"></span>
+            </div>
             <button type="submit" class="btn-login" id="butao" disabled> Recuperar </button>
         </form>
     </div>
+    <script src="../javascript/RecuperarSenha.js"></script>
 </body>
 </html>

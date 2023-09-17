@@ -7,12 +7,13 @@
     <link rel="stylesheet" type="text/css" href="styles/style.css">
 </head>
 <body>
-
+    
     <div class="left-login">
         <h2>Faça login <br> para acessar o IsacFlix</h2>
         <img src="styles\animations\pirate-boat-animate.svg" alt="" id="animação" class="animação">
     </div>
     <div class="right-login">
+        <div class="alert"></div>
         <div class="container">
             
 
@@ -29,7 +30,7 @@
                 <button class="btn-login" type="submit"  id="login">Entrar</button>
                 <button class="btn-create" type="button" onclick="window.location.href = 'pages/CriarConta.html';" >Criar Conta</button>
             </form>
-            <p id="recuperar">Recuperar senha</p>
+            <p id="recuperar"  onclick="window.location.href = 'pages/RecuperarSenha.html';">Recuperar senha</p>
         </div>
     </div>
     <script src="javascript\TelaLogin.js"></script>

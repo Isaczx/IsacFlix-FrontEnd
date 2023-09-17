@@ -4,7 +4,7 @@ const headers = new Headers();
 headers.append("Authorization", `Bearer ${token}`);
 const teste = document.querySelector(".episodio");
 
-console.log(id);
+
 buscarAnime();
 buscarEpisodios();
 
@@ -21,16 +21,14 @@ function buscarAnime(){
         }
         return response.json();
         }).then(anime =>{
-            console.log(anime);
+            
             
            
                 const nome = anime.nome;
                 const descrição = anime.decricao;
                 const imagem = anime.imagem;
 
-                console.log("Nome: ", nome);
-                console.log("Descrição ", descrição);
-                console.log("Imagem ", imagem);
+                
 
                 const container = document.querySelector(".containerAnime");
 
@@ -70,32 +68,45 @@ function buscarEpisodios(){
         return response.json();
         }
     ).then(data =>{
-
-        console.log(data);
+        console.log(data)
+       
         data.forEach(episodio => {
             const nomeE = episodio.nome;
             const  idE = episodio.id;
-            const video = episodio.video;
+            const videoE = episodio.video;
             const container = document.querySelector(".containerEpisodios")
-            console.log(video)
+            const botaoD = document.querySelector(".setaD");
+            const botaoE = document.querySelector(".setaE");
+            let indice = 0;
 
+            
             listaE = document.createElement("li");
             listaE.textContent = nomeE;
             listaE.classList.add("episodio");
 
             container.appendChild(listaE);
-
-            listaE.addEventListener("click", function(evento){
-
-                const frame = document.querySelector(".frame");
-                frame.src = video;
-                frame.title = nomeE;
+            
+            botaoD.addEventListener("click", function(evento){
+                if(indice < data.length - 1){
+                    
+                    const frame = document.querySelector(".frame");
+                    frame.src = data[indice].video;
+                    frame.title = data[indice].nome;
+                    indice++;
+                }
                 
             })
-
+            botaoE.addEventListener("click" ,() =>{
+                if(indice > data.length -1){
+                    const frame = document.querySelector(".frame");
+                    frame.src = data[indice].video;
+                    frame.title = data[indice].nome;
+                    indice--;
+                }
+            })
         });
 
-
+       
         
     })   
 }

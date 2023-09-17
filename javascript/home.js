@@ -1,10 +1,12 @@
-const co = document.querySelector(".category-list");
+const co = document.querySelector(".video-carousel");
 const headers = new Headers();
 const token = localStorage.getItem("token");
 headers.append("Authorization", `Bearer ${token}`);
 
 
 buscaAnimes();
+
+
 
 function buscaAnimes(){
 
@@ -31,12 +33,14 @@ function buscaAnimes(){
             console.log(nome, id, imagemA)
             
             const listaAnimes = document.createElement("div");
-            listaAnimes.classList.add("animes");
+            listaAnimes.classList.add("video-slide");
             
             const listaImagens = document.createElement("img");
             listaImagens.src = imagemA;
             listaImagens.alt = nome;
             listaImagens.classList.add("imagens");
+            listaImagens.width = 200;
+            listaImagens.height = 200;
             
             const nomeAnime = document.createElement("div");
             nomeAnime.textContent = nome;
@@ -48,6 +52,8 @@ function buscaAnimes(){
             co.appendChild(listaAnimes);
             listaAnimes.appendChild(listaImagens); 
 
+            
+            
             listaAnimes.addEventListener("click", function(event){
 
                 console.log("Anime: " ,nome);
@@ -57,10 +63,40 @@ function buscaAnimes(){
                 window.location.href= "../pages/ListaVideo.html";
 
                 
-            })
+            });
         });
         
-    })
+        //inserindo o carrosel
+            $('.video-carousel').slick({
+              slidesToShow: 5,
+              slidesToScroll: 1,
+              autoplay: true,
+              autoplaySpeed: 2000,
+              arrows: true,
+              responsive: [
+                {
+                  breakpoint: 768,
+                  settings: {
+                    slidesToShow: 2
+                  }
+                },
+                {
+                  breakpoint: 480,
+                  settings: {
+                    slidesToShow: 1
+                  }
+                }
+                
+              ]
+            });
+
+            
+            
+            const anterior = document.querySelector(".slick-prev").textContent = "Anterior";
+            const proximo=document.querySelector(".slick-next").textContent = "Proximo";
+          });
+          
+    
 
    
 }

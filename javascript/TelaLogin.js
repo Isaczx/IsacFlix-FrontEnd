@@ -1,6 +1,7 @@
 const formulario = document.querySelector("form");
 const nome = document.querySelector(".username");
 const senha = document.querySelector(".password");
+const alerta = document.querySelector(".alert");
 const headers = new Headers();
 headers.append('Content-Type', 'application/json');
 
@@ -19,7 +20,8 @@ function logar(){
     })
     .then(response => {
         if (!response.ok) {
-            throw new Error('Erro na solicitação de login');
+            mensagem("Email ou Senha incorretos")
+            throw new Error('Erro na solicitação de login');    
         }
         return response.json();
    
@@ -27,8 +29,6 @@ function logar(){
 .then(data => {
     const token = data.token; // Obtém o token de acesso do objeto de resposta
     
-    // Aqui você pode fazer o que quiser com o token
-    console.log('Token de acesso:', token );
 
     // Por exemplo, você pode armazenar o token em localStorage para uso posterior
     localStorage.setItem('token', token);
@@ -42,9 +42,6 @@ function logar(){
 formulario.addEventListener("submit", function(event){
     event.preventDefault();
 
-    console.log(formulario , nome.value);
-    console.log(formulario , senha.value);
-
     var f = logar();
    
     
@@ -52,3 +49,14 @@ formulario.addEventListener("submit", function(event){
     
 })
 
+function mensagem(msg){
+    const mensagem = document.createElement("div");
+    mensagem.classList.add("mensagem");
+    mensagem.innerText = msg;
+    alerta.append(mensagem);
+  
+  
+    setTimeout(() =>{
+      mensagem.remove();
+    }, 10000)
+  }

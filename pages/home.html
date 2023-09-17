@@ -4,15 +4,16 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Isacflix</title>
+  <link rel="stylesheet" href="../styles/reset.css">
   <link rel="stylesheet" href="../styles/home.css">
   <link rel="shortcut icon" href="../Isacflix-logo.png" type="image/x-icon">
-  
+  <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css">
   
 </head>
 <body>
   <header>
     <div class="logo">
-      <img src="../Isacflix-logo.png" alt="Isacflix Logo">
+      <h1 id="nome">IsacFlix</h1>
     </div>
     <nav class="navbar">
       
@@ -33,12 +34,18 @@
 
     <section class="categories">
       <div class="container">
-        <h2>Populares na Isacflix</h2>
-        <div class="category-list" >
-          
-
-
+        <div id="animes">
+          <h2>| Animes</h2>
+          <div class="video-carousel" id="animeCarousel" ></div>
         </div>
+          
+      <div id="series">
+        <h2>Series</h2>
+      </div>  
+        
+      <div id="filmes">
+        <h2>Filmes</h2>
+      </div>
                      
 </div>
            
@@ -56,17 +63,14 @@
   <footer>
     <div class="container">
       <p>&copy; 2023 Isacflix. Todos os direitos reservados.</p>
-      <ul class="footer-links">
-        <li><a href="#">Termos de uso</a></li>
-        <li><a href="#">Política de privacidade</a></li>
-        <li><a href="#">Contato</a></li>
-      </ul>
     </div>
     
       
   </footer>
   
   <script src="../javascript/home.js" ></script>
- 
+  <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+  
 </body>
 </html>
