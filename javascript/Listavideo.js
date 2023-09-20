@@ -3,6 +3,12 @@ const token = localStorage.getItem("token");
 const headers = new Headers();
 headers.append("Authorization", `Bearer ${token}`);
 const teste = document.querySelector(".episodio");
+const botaoD = document.querySelector(".setaD");
+const botaoE = document.querySelector(".setaE");
+const container = document.querySelector(".containerEpisodios");
+const selecao = document.querySelector("#epi");
+const option = document.querySelectorAll(".episodio");
+const frame = document.querySelector(".frame");
 
 
 buscarAnime();
@@ -69,44 +75,60 @@ function buscarEpisodios(){
         }
     ).then(data =>{
         console.log(data)
-       
+        console.log(data.length);
         data.forEach(episodio => {
             const nomeE = episodio.nome;
             const  idE = episodio.id;
             const videoE = episodio.video;
-            const container = document.querySelector(".containerEpisodios")
-            const botaoD = document.querySelector(".setaD");
-            const botaoE = document.querySelector(".setaE");
-            let indice = 0;
+            
+            
 
             
-            listaE = document.createElement("li");
+            listaE = document.createElement("option");
             listaE.textContent = nomeE;
             listaE.classList.add("episodio");
 
-            container.appendChild(listaE);
+            selecao.appendChild(listaE);
+            frame.src = data[0].video;
+            frame.title = data[0].nome;
             
-            botaoD.addEventListener("click", function(evento){
-                if(indice < data.length - 1){
-                    
-                    const frame = document.querySelector(".frame");
-                    frame.src = data[indice].video;
-                    frame.title = data[indice].nome;
-                    indice++;
-                }
-                
-            })
-            botaoE.addEventListener("click" ,() =>{
-                if(indice > data.length -1){
-                    const frame = document.querySelector(".frame");
-                    frame.src = data[indice].video;
-                    frame.title = data[indice].nome;
-                    indice--;
-                }
-            })
+          selecao.addEventListener("change", ()=>{
+            var numeroEpisodio = selecao.selectedIndex;
+            console.log(numeroEpisodio);
+           
+            frame.title = data[numeroEpisodio].nome;
+            frame.src = data[numeroEpisodio].video;
+            
+          })
+           
+          
         });
 
-       
+       click(data);
         
-    })   
+    });
+    
+}
+
+
+function click(data){
+    botaoD.addEventListener("click", () =>{
+        if(selecao.selectedIndex < selecao.options.length -1){
+        selecao.selectedIndex += 1;
+        var numeroEpisodio = selecao.selectedIndex;
+        frame.title = data[numeroEpisodio].nome;
+        frame.src = data[numeroEpisodio].video;
+
+        }
+    })
+
+    botaoE.addEventListener("click", () =>{
+
+        if(selecao.selectedIndex  >= 1){
+            selecao.selectedIndex -= 1;
+            var numeroEpisodio = selecao.selectedIndex;
+            frame.title = data[numeroEpisodio].nome;
+            frame.src = data[numeroEpisodio].video;
+        }
+    })
 }

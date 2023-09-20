@@ -103,8 +103,14 @@ body {
     color: var(--cor-terciaria);
   }
 
+  button:hover{
+    cursor: pointer;
+    color: var(--cor-letras);
+  }
+
   .video-slide:hover{
     color: var(--cor-letras);
+    cursor: pointer;
   }
 
 
